@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/challenge?characterEncoding=UTF-8
+    username: root
+    password: root
+    driver-class-name: org.mariadb.jdbc.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update

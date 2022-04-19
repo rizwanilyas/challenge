@@ -1,0 +1,42 @@
+<div class="container">
+    <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            
+       <div class="col">
+          <div class="form-outline">
+             <label class="form-label" for="name">Name</label>
+             <input type="text" [(ngModel)]="form.name" name="form.name" #name="ngModel" class="form-control" />
+          </div>
+          <div class="alert alert-danger" role="alert" *ngIf="name.errors && f.submitted">
+             Name is required!
+          </div>
+       </div>
+ 
+       <div class="col">
+          <div class="form-outline">
+             <label class="form-label" for="source">Order Source</label>
+             <select multiple ="" class="form-control" [(ngModel)]="form.sectors" name="form.sectors"
+                #sectors="ngModel" required>
+                <option *ngFor="let p of sectorsList" value="{{p.id}}">{{p.name}}</option>
+             </select>
+             <div class="alert alert-danger" role="alert" *ngIf="sectors.errors && f.submitted">
+                Sectors are required!
+             </div>
+          </div>
+       </div>  
+       <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" [(ngModel)]="form.agreeToTerms"
+             name="form.agreeToTerms" />
+          <label class="form-check-label" for="flexCheckChecked">
+             Agree to terms
+          </label>
+       </div>
+       
+       <div class="form-group">
+          <button class="btn btn-dark btn-block">Save</button>
+        </div>
+    </form>
+ 
+    <div class="alert alert-success" *ngIf="isSuccessful">
+       New Employee created
+     </div>
+ </div>
